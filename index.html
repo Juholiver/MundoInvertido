@@ -31,9 +31,10 @@
     </header>
 
     <main>
+        <div id="bottom-characters" class="world-characters"></div>
         <section id="section-inverted-world" class="container">
             <div class="section-texts">
-                <h1>O Mundo Invertido</h1>
+                <h2>O Mundo Invertido</h2>
                 <p role="text">
                     O Mundo Invertido parece uma cópia do nosso mundo, mas com criaturas 
                     horrendas, tempestades assustadoras, muita escuridão e entidades 
@@ -97,7 +98,7 @@
             <h2>O Clube Dungeons & Dragons</h2>
             <p>
                 Para deter Vecna, os Heróis de Stranger Things também precisam de 
-                você. O Clube de D&D mais famoso de Hawkings está comvagas abertas
+                você. O Clube de D&D mais famoso de Hawkings está com vagas abertas
                 para sua próxima aventura . Se você é destemido, gosta de desafios e 
                 não tem medo de rodar o D20, chegou a hora de se inscrever para fazerparte da nova campanha.
             </p>
@@ -134,5 +135,25 @@
         <img src="/assets/images/footer/logo.svg" alt="Logotipo Dio">
 
     </footer>
+    <script type="module" src="/assets/js/main.js"></script>
+    <script>
+        window.addEventListener('click', function(){
+            const audio = document.getElementById('music');
+            audio.play();
+            audio.volume = 0.2;
+        })
+        function switchTheme(){
+            document.body.classList.toogle('dark-theme');
+            document.body.classList.toogle('light-theme');
+
+        const theme = document.body.classList[0];
+        const music = theme === 'light-theme' ? 'normal-world.mpeg' : 'inverted-world.mpeg'
+        
+        const audio = document.getElementById('music');
+        audio.src = `assets/musics/${music}`;
+        audio.play();
+        audio.volume = 0.2;   
+        }
+    </script>
 </body>
 </html>

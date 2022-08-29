@@ -1,4 +1,4 @@
-import { subscribeToHellfireclub } from "./firebase/hellfire-clube.js"
+import { getHellfireClubSubscriptions, subscribeToHellfireclub } from "./firebase/hellfire-clube.js"
 
 const txtName = document.getElementById('txtName')
 const txtEmail = document.getElementById('txtEmail')
@@ -6,6 +6,8 @@ const txtLevel = document.getElementById('txtLevel')
 const txtCharacter = document.getElementById('txtCharacter')
 
 const btnSubscribe = document.getElementById('btnSubscribe')
+
+const subscriptionsList = document.getElementById('subscriptions')
 
 
 btnSubscribe.addEventListener('click', async () => {
@@ -17,6 +19,25 @@ btnSubscribe.addEventListener('click', async () => {
     }
     // SALVAR NO BANCO DE DADOS!!!
     const subscriptionId = await subscribeToHellfireclub(subscription)
-    console.log(`Inscrito com sucesso: ${subscriptionId}`)
+    
+
+    txtName.value = ''
+    txtEmail.value = ''
+    txtLevel.value = ''
+    txtCharacter.value = ''
+
+    alert(`Inscrito com sucesso: ${subscription}`)
 
 })
+/// funcition para lista banco de dados
+async function loadData() {
+   const subscriptions = await getHellfireClubSubscriptions()
+
+   subscriptionsList.innerHTML = subscriptions.map(sub => `
+    <li>
+            ${sub.name}
+    </li>
+   `).join('')
+    console.log(subscriptions)
+}
+loadData()

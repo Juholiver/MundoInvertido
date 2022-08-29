@@ -26,7 +26,7 @@ btnSubscribe.addEventListener('click', async () => {
     txtLevel.value = ''
     txtCharacter.value = ''
 
-    alert(`Inscrito com sucesso: ${subscription}`)
+    alert(`Inscrito com sucesso`)
 
 })
 /// funcition para lista banco de dados
